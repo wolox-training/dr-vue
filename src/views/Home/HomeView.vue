@@ -5,12 +5,16 @@
         <img src="../../assets/wolox-logo.png" alt="wolox-logo" />
         <RegisterForm @onSubmit="handleSubmit" />
       </div>
+      <hr />
+      <BaseButton variant="secondary" label="Sing in" type="button" />
     </section>
   </main>
 </template>
 
 <script lang="ts">
 import RegisterForm from "./components/RegisterForm.vue";
+import BaseButton from "@/components/BaseButton.vue";
+
 type register = {
   first_name: string;
   last_name: string;
@@ -23,6 +27,7 @@ type register = {
 export default {
   components: {
     RegisterForm,
+    BaseButton,
   },
   setup() {
     function handleSubmit(args: register) {

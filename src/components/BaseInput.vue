@@ -8,11 +8,13 @@
       autocomplete="off"
       @input="$emit('update:modelValue', $event.target.value)"
       class="field"
+      :class="hasError ? 'error-field' : ''"
     />
+    <p class="error-message" v-if="hasError">{{ errorMessage }}</p>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   emits: ["update:modelValue"],
   props: {
@@ -24,6 +26,14 @@ export default {
       type: [String, Number],
       default: "",
     },
+    hasError: {
+      type: Boolean,
+      default: false,
+    },
+    errorMessage: {
+      type: String,
+      default: "",
+    },
   },
 };
 </script>
@@ -33,6 +43,8 @@ export default {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
+  text-align: start;
+  position: relative;
 }
 
 .label {
@@ -45,5 +57,18 @@ export default {
   padding: 0 5px;
   border: none;
   border-radius: 5px;
+}
+
+.error-message {
+  font-size: 12px;
+  color: red;
+  margin: 0;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+}
+
+.error-field {
+  border: 2px solid red;
 }
 </style>

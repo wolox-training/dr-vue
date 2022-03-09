@@ -51,7 +51,7 @@ export default defineComponent({
 
   &:disabled {
     opacity: 0.5;
-    cursor: none;
+    cursor: not-allowed;
   }
 }
 
